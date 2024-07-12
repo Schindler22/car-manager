@@ -1,0 +1,21 @@
+<div class="car-form">
+
+    <select id="marca" [(ngModel)]="car.marca" (change)="onMarcaChange()" (click)="loadBrands()">
+        <option *ngIf="car.marca" [value]="car.marca" disabled selected hidden>{{car.marca}}</option>
+        <option *ngIf="car.marca == ''" value="" disabled selected hidden>Selecione o marca</option>
+        <option *ngFor="let marca of marcas" [value]="marca">{{ marca }}</option>
+    </select>
+
+    <select id="modelo" [(ngModel)]="car.modelo">
+        <option *ngIf="car.modelo" [value]="car.modelo" disabled selected hidden>{{car.modelo}}</option>
+        <option *ngIf="car.modelo == ''" value="" disabled selected hidden>Selecione o modelo</option>
+        <option *ngFor="let modelo of modelos" >{{ modelo }}</option>
+    </select>
+
+    <input [maxlength]="8" [(ngModel)]="car.placa" placeholder="Placa">
+    <input [maxlength]="11" [(ngModel)]="car.renavam" placeholder="Renavam">
+    <input [maxlength]="17" [(ngModel)]="car.chassi" placeholder="Chassi">
+    <input [maxlength]="4" [(ngModel)]="car.ano" placeholder="Ano">
+    <button (click)="editCar(car)">Editar</button>
+    <button [routerLink]="['/list-cars']">Voltar</button>
+</div>

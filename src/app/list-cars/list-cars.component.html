@@ -1,0 +1,36 @@
+<div class="car-list">
+  <p>Listagem dos carros</p>
+  <a routerLink="/new-car">Novo carro</a>
+
+  <table *ngIf="cars.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Placa</th>
+        <th>Chassi</th>
+        <th>Renavam</th>
+        <th>Modelo</th>
+        <th>Marca</th>
+        <th>Ano</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars">
+        <td>{{ car.id }}</td>
+        <td>{{ car.placa }}</td>
+        <td>{{ car.chassi }}</td>
+        <td>{{ car.renavam }}</td>
+        <td>{{ car.modelo }}</td>
+        <td>{{ car.marca }}</td>
+        <td>{{ car.ano }}</td>
+        <td>
+          <button [routerLink]="['/edit-car', car.id]">Edit</button>
+          <button (click)="deleteCar(car.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!cars?.length">Nenhum carro encontrado.</p>
+</div>
